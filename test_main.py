@@ -31,6 +31,12 @@ class MainTest(TestCase):
         self.assertEquals(result, 4)
         self.assertEquals(index, 1)
 
+    def test_get_neighbor_next_lt(self):
+        input_list = [ 7, 4, 6]
+        result, index = get_bigger_neighbor(input_list, 1 )
+        self.assertEquals(result, 7)
+        self.assertEquals(index, 0)
+
     def test_get_neighbor_lt_3(self):
         input_list = [3, 6]
         result, index = get_bigger_neighbor(input_list, 0 )

@@ -26,17 +26,3 @@ $ python main.py < input.txt
 $ py.test
 ```
 
-#### DONE
-
-[x] - Percorre toda a arvore e enfilera conforme BFS
-
-[x] - Descobre nivel, node e vai guardando so vizinhos
-...
-
-#### TO-DO
-[ ] - Escrever testes para validar o BFS
-
-[ ] - Modificar o BFS para a resoluçào do problema
-
-[ ] - Terminar de implementar o algoritimo que faz a contagem do caminho mais longo
-

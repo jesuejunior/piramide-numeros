@@ -2,7 +2,7 @@ from unittest import TestCase
 from main import clear_and_convert_to_int
 from main import get_bigger_neighbor
 
-class Desafio1Test(TestCase):
+class MainTest(TestCase):
     def test_clear_and_return_list(self):
         data_input = '7 4 13\n'
         output = clear_and_convert_to_int(data_input)
@@ -33,7 +33,7 @@ class Desafio1Test(TestCase):
 
     def test_get_neighbor_lt_3(self):
         input_list = [3, 6]
-        result, index = get_bigger_neighbor(input_list )
+        result, index = get_bigger_neighbor(input_list, 0 )
         self.assertEquals(result, 6)
         self.assertEquals(index, 1)
 

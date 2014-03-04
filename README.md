@@ -17,7 +17,6 @@ $ git clone https://github.com/jesuejunior/piramide-numeros
 ### Para executar
 
 ```shell
-
 $ python main.py < input.txt
 ```
 

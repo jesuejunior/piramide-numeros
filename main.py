@@ -7,10 +7,6 @@ import time
 
 def get_bigger_neighbor(array, last_index=None):
 
-    #Tentativa de modelar o problema de forma mais complexa
-    # nodes = []
-    # nodes.append({ 'id': 1, 'edge': 0, 'lvl': 0, 'adj': [2,3], 'index': 0})
-
     if last_index:
         value = max(array)
         index = last_index
@@ -19,15 +15,17 @@ def get_bigger_neighbor(array, last_index=None):
         value = max(array)
         index = array.index(value)
 
-    tmp_array = array[slice(index,index+1)]
+    start = index-1
+    end = index + 2
+    if len(array) < 3:
+        start = 0
+        end = index + 1
+
+    tmp_array = array[slice(start,end)]
     value = max(tmp_array)
     index = array.index(value)
 
     return value, index
-
-
-
-
 
 
 class Queue(object): 
@@ -57,8 +55,6 @@ class Queue(object):
         return result
 
 
-
-
 def bfs(graph,start,end,q):
 
     temp_path = [start]
@@ -86,16 +82,23 @@ def execute():
     if not fileinput.input():
         print "Ta de pegadinha? Input vazio..."
     else:
-        lvl = -1
-        nodes = {}
+        nodes = []
         for line in fileinput.input():
-            lvl += 1
-            nodes.update({str(lvl) : clear_and_convert_to_int(line)})
+            nodes.append(clear_and_convert_to_int(line))
 
-        queue = Queue()
-        graph = {'b': [7, 4], 'a': [3], 'd': [8, 5, 9, 3], 'c': [2, 4, 6]}
-        print bfs(graph,"a","d", queue)
         print nodes
+        total = 0
+        index = 0
+        value = 0
+        for n in nodes:
+            if not index:
+                value, index = get_bigger_neighbor(n,last_index=0)
+            else:
+                value, index = get_bigger_neighbor(n,last_index=index)
+
+            total += value
+
+        print total
 if __name__ == "__main__":
 
     start = time.time()

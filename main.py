@@ -8,19 +8,21 @@ import time
 def get_bigger_neighbor(array, last_index=0):
     if len(array) == 1:
         value = max(array)
-        index = last_index
+        index = array.index(value)
         return value, index
     else:
         # value = max(array)
         index = last_index
 
-        start = 1
         end = index + 2
         if len(array) <= 2:
-            start = 0
+            # start = 0
             end = index + 1
+            tmp_array = array
+        else:
+            start = 0
+            tmp_array = array[slice(start,end)]
 
-        tmp_array = array[slice(start,end)]
         value = max(tmp_array)
         index = array.index(value)
 
@@ -43,6 +45,8 @@ def execute():
         for n in nodes:
             value, index = get_bigger_neighbor(n,last_index=index)
             total += value
+
+            print value,index
         print total
 if __name__ == "__main__":
 

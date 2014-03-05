@@ -33,6 +33,16 @@ def clear_and_convert_to_int(line):
     line = map(lambda x: int(x), line)
     return line
 
+
+def _get_bigger_path(nodes):
+    total = 0
+    index = 0
+    for n in nodes:
+        value, index = get_bigger_neighbor(n, last_index=index)
+        total += value
+    return total
+
+
 def execute():
     if not fileinput.input():
         print "Ta de pegadinha? Input vazio..."
@@ -40,14 +50,8 @@ def execute():
         nodes = []
         for line in fileinput.input():
             nodes.append(clear_and_convert_to_int(line))
-        total = 0
-        index = 0
-        for n in nodes:
-            value, index = get_bigger_neighbor(n,last_index=index)
-            total += value
+        print _get_bigger_path(nodes)
 
-            print value,index
-        print total
 if __name__ == "__main__":
 
     start = time.time()
